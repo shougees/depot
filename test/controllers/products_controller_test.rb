@@ -55,4 +55,12 @@ class ProductsControllerTest < ActionController::TestCase
 
     assert_redirected_to products_path
   end
+
+  test "should have div with id product_list being displayed" do
+    assert_select '.list_actions' do |elements|
+      elements.each do |element|
+        assert_select element, "link_to", 3
+      end
+    end
+  end
 end
